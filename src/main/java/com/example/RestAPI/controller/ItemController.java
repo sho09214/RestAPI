@@ -20,12 +20,18 @@ public class ItemController {
     }
 
     @GetMapping("/items/{itemId}")
-    public Item getItem(@PathVariable("itemId") int id){
-        return service.getItem(id);
+    public Item getItem(@PathVariable("itemId") int itemId){
+        return service.getItem(itemId);
     }
 
     @PostMapping("/items")
     public void addItem(@RequestBody Item item){
         service.addItem(item);
+    }
+
+    @PutMapping("/items/{itemId}")
+    public void updateItem(@PathVariable("itemId") int itemId,
+                           @RequestBody Item item) {
+        service.updateItem(itemId, item);
     }
 }
