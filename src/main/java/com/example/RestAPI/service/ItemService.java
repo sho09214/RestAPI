@@ -19,4 +19,19 @@ public class ItemService {
     public List<Item> getAllItems(){
         return allItems;
     }
+
+    public Item getItem(int id){
+        Item item = new Item();
+        for(int i = 0; i < allItems.size(); i++){
+            if(allItems.get(i).getId() == id){
+                item = allItems.get(i);
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public void addItem(Item item){
+        allItems.add(item);
+    }
 }
