@@ -42,4 +42,7 @@ public class ItemService {
             }
         }
     }
+    public void deleteItem(int id){
+        allItems.removeIf(i -> i.getId() == id);
+    }
 }
