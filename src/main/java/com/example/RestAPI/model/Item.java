@@ -1,7 +1,15 @@
 package com.example.RestAPI.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity(name = "m_item")
 public class Item {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String category;
 
@@ -11,18 +19,17 @@ public class Item {
     }
 
     //コンストラクタ
-    public Item(int id, String name, String category){
-        this.id = id;
+    public Item(String name, String category){
         this.name = name;
         this.category = category;
     }
 
     //Getter / Setter
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
