@@ -32,6 +32,7 @@ public class ItemService {
     public List<Item> getAllItems(){
         List<Item> allItems = new ArrayList<>();
 
+        //Cache動作確認用
         try {
             Thread.sleep(3000);
         } catch (Exception e) {
@@ -44,6 +45,7 @@ public class ItemService {
 
     @Cacheable(value = "getItem", key = "#p0")
     public Optional<Item> getItem(long id){
+        //Cache動作確認用
         try {
             Thread.sleep(3000);
         } catch (Exception e) {
