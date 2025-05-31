@@ -1,6 +1,7 @@
 package com.example.RestAPI.controller;
 
 import com.example.RestAPI.exception.ItemNotFoundException;
+import com.example.RestAPI.model.HelloMessage;
 import com.example.RestAPI.model.Item;
 import com.example.RestAPI.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,10 @@ public class ItemController {
     @DeleteMapping("/items/{itemId}")
     public void deleteItem(@PathVariable("itemId") long itemId){
         service.deleteItem(itemId);
+    }
+
+    @GetMapping("/callHello")
+    public HelloMessage callHello(){
+        return service.getHelloResponse();
     }
 }
