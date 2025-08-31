@@ -1,5 +1,6 @@
 package com.example.RestAPI.controller;
 
+import com.example.RestAPI.exception.ItemNofFoundException;
 import com.example.RestAPI.model.Item;
 import com.example.RestAPI.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ItemController {
@@ -21,8 +23,8 @@ public class ItemController {
     }
 
     @GetMapping("/items/{itemId}")
-    public Item getItem(@PathVariable("itemId") String itemId) {
-        return service.getItem(itemId);
+    public Item getItem(@PathVariable("itemId") Long itemId) {
+        return service.getItem(itemId).orElseThrow(() -> new ItemNofFoundException(itemId));
     }
 
     @PostMapping("/items")
@@ -32,12 +34,12 @@ public class ItemController {
 
     @PutMapping("/items/{itemId}")
     public void updateItem(@RequestBody Item item,
-                           @PathVariable("itemId") String itemId) {
+                           @PathVariable("itemId") Long itemId) {
         service.updateItem(itemId, item);
     }
 
     @DeleteMapping("/items/{itemId}")
-    public void deleteItem(@PathVariable("itemId") String itemId) {
+    public void deleteItem(@PathVariable("itemId") Long itemId) {
         service.deleteItem(itemId);
     }
 }

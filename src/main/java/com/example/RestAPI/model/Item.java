@@ -1,5 +1,9 @@
 package com.example.RestAPI.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,8 +11,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity(name = "m_item")
 public class Item {
-    private String itemId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long itemId;
     private String itemName;
     private String itemCategory;
+
+    public Item(String itemName, String itemCategory) {
+        this.itemName = itemName;
+        this.itemCategory = itemCategory;
+    }
 }
