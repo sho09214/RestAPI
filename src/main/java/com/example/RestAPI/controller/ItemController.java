@@ -35,4 +35,9 @@ public class ItemController {
                            @PathVariable("itemId") String itemId) {
         service.updateItem(itemId, item);
     }
+
+    @DeleteMapping("/items/{itemId}")
+    public void deleteItem(@PathVariable("itemId") String itemId) {
+        service.deleteItem(itemId);
+    }
 }
