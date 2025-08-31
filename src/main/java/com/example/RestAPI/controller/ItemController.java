@@ -3,9 +3,7 @@ package com.example.RestAPI.controller;
 import com.example.RestAPI.model.Item;
 import com.example.RestAPI.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,5 +23,10 @@ public class ItemController {
     @GetMapping("/items/{itemId}")
     public Item getItem(@PathVariable("itemId") String itemId) {
         return service.getItem(itemId);
+    }
+
+    @PostMapping("/items")
+    public void addItem(@RequestBody Item item) {
+        service.addItem(item);
     }
 }
